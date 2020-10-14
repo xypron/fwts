@@ -543,6 +543,9 @@ bool fwts_uefi_efivars_iface_exist(void)
  *  fwts_uefi_rt_support_status_get()
  *	get the status of runtime service support and the value of
  *	the RuntimeServicesSupported variable
+ *
+ *  This variable only exists in UEFI 2.8 but not in UEFI 2.8 (Errata A) ff.
+ *  TODO: evaluate the EFI_RT_PROPERTIES_TABLE configuration table.
  */
 void fwts_uefi_rt_support_status_get(int fd, bool *getvar_supported, uint32_t *var_rtsupported)
 {
@@ -569,11 +572,8 @@ void fwts_uefi_rt_support_status_get(int fd, bool *getvar_supported, uint32_t *v
 
 	ioret = ioctl(fd, EFI_RUNTIME_GET_VARIABLE, &getvariable);
 	if (ioret == -1) {
-		if (status == EFI_NOT_FOUND) {
-			*getvar_supported = true;
-		} else {
-			*getvar_supported = false;
-		}
+		*getvar_supported = true;
+		*var_rtsupported = 0x3fff;
 		return;
 	}
 
