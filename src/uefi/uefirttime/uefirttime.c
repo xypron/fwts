@@ -1142,7 +1142,6 @@ static int uefirttime_test37(fwts_framework *fw)
 static int uefirttime_test38(fwts_framework *fw)
 {
 	long ioret;
-	bool getvar_supported;
 	uint32_t var_runtimeservicessupported;
 
 	struct efi_settime settime;
@@ -1155,17 +1154,7 @@ static int uefirttime_test38(fwts_framework *fw)
 	EFI_TIME efi_time;
 	EFI_TIME_CAPABILITIES efi_time_cap;
 
-	fwts_uefi_rt_support_status_get(fd, &getvar_supported,
-			&var_runtimeservicessupported);
-
-	if (!getvar_supported || (var_runtimeservicessupported == 0xFFFF)) {
-		fwts_skipped(fw, "Cannot get the RuntimeServicesSupported "
-				"variable, maybe the runtime service "
-				"GetVariable is not supported or "
-				"RuntimeServicesSupported not provided by "
-				"firmware.");
-		return FWTS_SKIP;
-	}
+	fwts_uefi_rt_support_status_get(fd, &var_runtimeservicessupported);
 
 	gettime.Capabilities = &efi_time_cap;
 	gettime.Time = &efi_time;

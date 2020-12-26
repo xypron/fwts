@@ -2020,7 +2020,6 @@ static int uefirtvariable_test9(fwts_framework *fw)
 {
 	long ioret;
 
-	bool getvar_supported;
 	uint32_t var_runtimeservicessupported;
 
 	struct efi_getvariable getvariable;
@@ -2041,17 +2040,7 @@ static int uefirtvariable_test9(fwts_framework *fw)
 	uint64_t getdatasize = sizeof(testdata);
 	uint32_t attr;
 
-	fwts_uefi_rt_support_status_get(fd, &getvar_supported,
-			&var_runtimeservicessupported);
-
-	if (!getvar_supported || (var_runtimeservicessupported == 0xFFFF)) {
-		fwts_skipped(fw, "Cannot get the RuntimeServicesSupported "
-				"variable, maybe the runtime service "
-				"GetVariable is not supported or "
-				"RuntimeServicesSupported not provided by "
-				"firmware.");
-		return FWTS_SKIP;
-	}
+	fwts_uefi_rt_support_status_get(fd, &var_runtimeservicessupported);
 
 	setvariable.VariableName = variablenametest;
 	setvariable.VendorGuid = &gtestguid1;

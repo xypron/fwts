@@ -245,22 +245,12 @@ static int uefirtmisc_test4(fwts_framework *fw)
 {
 	long ioret;
 	uint64_t status;
-	bool getvar_supported;
 	uint32_t var_runtimeservicessupported;
 
 	struct efi_getnexthighmonotoniccount getnexthighmonotoniccount;
 	uint32_t highcount;
 
-	fwts_uefi_rt_support_status_get(fd, &getvar_supported,
-			&var_runtimeservicessupported);
-	if (!getvar_supported || (var_runtimeservicessupported == 0xFFFF)) {
-		fwts_skipped(fw, "Cannot get the RuntimeServicesSupported "
-				"variable, maybe the runtime service "
-				"GetVariable is not supported or "
-				"RuntimeServicesSupported not provided by "
-				"firmware.");
-		return FWTS_SKIP;
-	}
+	fwts_uefi_rt_support_status_get(fd, &var_runtimeservicessupported);
 
 	getnexthighmonotoniccount.HighCount = &highcount;
 	getnexthighmonotoniccount.status = &status;
