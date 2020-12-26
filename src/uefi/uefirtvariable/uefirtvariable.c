@@ -2052,8 +2052,7 @@ static int uefirtvariable_test9(fwts_framework *fw)
 	ioret = ioctl(fd, EFI_RUNTIME_SET_VARIABLE, &setvariable);
 	if (ioret == -1) {
 		if (status == EFI_UNSUPPORTED) {
-			if ((var_runtimeservicessupported & EFI_RT_SUPPORTED_SET_VARIABLE)
-				|| (var_runtimeservicessupported == 0)) {
+			if (var_runtimeservicessupported & EFI_RT_SUPPORTED_SET_VARIABLE) {
 				fwts_failed(fw, LOG_LEVEL_HIGH, "UEFIRuntimeSetVariable",
 					"Get the Setvariable runtime service supported "
 					"via RuntimeServicesSupported variable. "
@@ -2067,8 +2066,7 @@ static int uefirtvariable_test9(fwts_framework *fw)
 				fwts_skipped(fw, "Unknown error occurred, skip test.");
 				return FWTS_SKIP;
 			}
-			if ((var_runtimeservicessupported & EFI_RT_SUPPORTED_SET_VARIABLE) ||
-				(var_runtimeservicessupported == 0)) {
+			if (var_runtimeservicessupported & EFI_RT_SUPPORTED_SET_VARIABLE) {
 				fwts_passed(fw, "UEFI SetVariable runtime service "
 					"supported status test passed.");
 			} else {
@@ -2083,8 +2081,7 @@ static int uefirtvariable_test9(fwts_framework *fw)
 			fwts_skipped(fw, "Unknown error occurred, skip test.");
 			return FWTS_SKIP;
 		}
-		if ((var_runtimeservicessupported & EFI_RT_SUPPORTED_SET_VARIABLE) ||
-			(var_runtimeservicessupported == 0)) {
+		if (var_runtimeservicessupported & EFI_RT_SUPPORTED_SET_VARIABLE) {
 			fwts_passed(fw, "UEFI SetVariable runtime service "
 				"supported status test passed.");
 		} else {
@@ -2105,8 +2102,7 @@ static int uefirtvariable_test9(fwts_framework *fw)
 	ioret = ioctl(fd, EFI_RUNTIME_GET_VARIABLE, &getvariable);
 	if (ioret == -1) {
 		if (status == EFI_UNSUPPORTED) {
-			if ((var_runtimeservicessupported & EFI_RT_SUPPORTED_GET_VARIABLE)
-				|| (var_runtimeservicessupported == 0)) {
+			if (var_runtimeservicessupported & EFI_RT_SUPPORTED_GET_VARIABLE) {
 				fwts_failed(fw, LOG_LEVEL_HIGH, "UEFIRuntimeGetVariable",
 					"Get the GetVariable runtime service supported "
 					"via RuntimeServicesSupported variable. "
@@ -2120,8 +2116,7 @@ static int uefirtvariable_test9(fwts_framework *fw)
 				fwts_skipped(fw, "Unknown error occurred, skip test.");
 				return FWTS_SKIP;
 			}
-			if ((var_runtimeservicessupported & EFI_RT_SUPPORTED_GET_VARIABLE) ||
-				(var_runtimeservicessupported == 0)) {
+			if (var_runtimeservicessupported & EFI_RT_SUPPORTED_GET_VARIABLE) {
 				fwts_passed(fw, "UEFI GetVariable runtime service "
 					"supported status test passed.");
 			} else {
@@ -2136,8 +2131,7 @@ static int uefirtvariable_test9(fwts_framework *fw)
 			fwts_skipped(fw, "Unknown error occurred, skip test.");
 			return FWTS_SKIP;
 		}
-		if ((var_runtimeservicessupported & EFI_RT_SUPPORTED_GET_VARIABLE) ||
-			(var_runtimeservicessupported == 0)) {
+		if (var_runtimeservicessupported & EFI_RT_SUPPORTED_GET_VARIABLE) {
 			fwts_passed(fw, "UEFI GetVariable runtime service "
 				"supported status test passed.");
 		} else {
@@ -2168,8 +2162,7 @@ static int uefirtvariable_test9(fwts_framework *fw)
 	ioret = ioctl(fd, EFI_RUNTIME_GET_NEXTVARIABLENAME, &getnextvariablename);
 	if (ioret == -1) {
 		if (status == EFI_UNSUPPORTED) {
-			if ((var_runtimeservicessupported & EFI_RT_SUPPORTED_GET_NEXT_VARIABLE_NAME)
-				|| (var_runtimeservicessupported == 0)) {
+			if (var_runtimeservicessupported & EFI_RT_SUPPORTED_GET_NEXT_VARIABLE_NAME) {
 				fwts_failed(fw, LOG_LEVEL_HIGH, "UEFIRuntimeGetNextVarName",
 					"Get the GetNextVarName runtime service supported "
 					"via RuntimeServicesSupported variable. "
@@ -2183,8 +2176,7 @@ static int uefirtvariable_test9(fwts_framework *fw)
 				fwts_skipped(fw, "Unknown error occurred, skip test.");
 				return FWTS_SKIP;
 			}
-			if ((var_runtimeservicessupported & EFI_RT_SUPPORTED_GET_NEXT_VARIABLE_NAME)
-				|| (var_runtimeservicessupported == 0)) {
+			if (var_runtimeservicessupported & EFI_RT_SUPPORTED_GET_NEXT_VARIABLE_NAME) {
 				fwts_passed(fw, "UEFI GetNextVarName runtime service "
 					"supported status test passed.");
 			} else {
@@ -2199,8 +2191,7 @@ static int uefirtvariable_test9(fwts_framework *fw)
 			fwts_skipped(fw, "Unknown error occurred, skip test.");
 			return FWTS_SKIP;
 		}
-		if ((var_runtimeservicessupported & EFI_RT_SUPPORTED_GET_NEXT_VARIABLE_NAME)
-			|| (var_runtimeservicessupported == 0)) {
+		if (var_runtimeservicessupported & EFI_RT_SUPPORTED_GET_NEXT_VARIABLE_NAME) {
 			fwts_passed(fw, "UEFI GetNextVarName runtime service "
 				"supported status test passed.");
 		} else {
@@ -2221,8 +2212,7 @@ static int uefirtvariable_test9(fwts_framework *fw)
 	ioret = ioctl(fd, EFI_RUNTIME_QUERY_VARIABLEINFO, &queryvariableinfo);
 	if (ioret == -1) {
 		if (status == EFI_UNSUPPORTED) {
-			if ((var_runtimeservicessupported & EFI_RT_SUPPORTED_QUERY_VARIABLE_INFO)
-				|| (var_runtimeservicessupported == 0)) {
+			if (var_runtimeservicessupported & EFI_RT_SUPPORTED_QUERY_VARIABLE_INFO) {
 				fwts_failed(fw, LOG_LEVEL_HIGH, "UEFIRuntimeQueryVarInfo",
 					"Get the QueryVarInfo runtime service supported "
 					"via RuntimeServicesSupported variable. "
@@ -2236,8 +2226,7 @@ static int uefirtvariable_test9(fwts_framework *fw)
 				fwts_skipped(fw, "Unknown error occurred, skip test.");
 				return FWTS_SKIP;
 			}
-			if ((var_runtimeservicessupported & EFI_RT_SUPPORTED_QUERY_VARIABLE_INFO)
-				|| (var_runtimeservicessupported == 0)) {
+			if (var_runtimeservicessupported & EFI_RT_SUPPORTED_QUERY_VARIABLE_INFO) {
 				fwts_passed(fw, "UEFI QueryVarInfo runtime service "
 					"supported status test passed.");
 			} else {
@@ -2252,8 +2241,7 @@ static int uefirtvariable_test9(fwts_framework *fw)
 			fwts_skipped(fw, "Unknown error occurred, skip test.");
 			return FWTS_SKIP;
 		}
-		if ((var_runtimeservicessupported & EFI_RT_SUPPORTED_QUERY_VARIABLE_INFO)
-			|| (var_runtimeservicessupported == 0)) {
+		if (var_runtimeservicessupported & EFI_RT_SUPPORTED_QUERY_VARIABLE_INFO) {
 			fwts_passed(fw, "UEFI QueryVarInfo runtime service "
 				"supported status test passed.");
 		} else {

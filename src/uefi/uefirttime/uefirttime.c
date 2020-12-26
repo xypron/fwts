@@ -1162,8 +1162,7 @@ static int uefirttime_test38(fwts_framework *fw)
 	ioret = ioctl(fd, EFI_RUNTIME_GET_TIME, &gettime);
 	if (ioret == -1) {
 		if (status == EFI_UNSUPPORTED) {
-			if ((var_runtimeservicessupported & EFI_RT_SUPPORTED_GET_TIME)
-				|| (var_runtimeservicessupported == 0)) {
+			if (var_runtimeservicessupported & EFI_RT_SUPPORTED_GET_TIME) {
 				fwts_failed(fw, LOG_LEVEL_HIGH, "UEFIRuntimeGetTime",
 					"Get the GetTime runtime service supported "
 					"via RuntimeServicesSupported variable. "
@@ -1177,8 +1176,7 @@ static int uefirttime_test38(fwts_framework *fw)
 				fwts_skipped(fw, "Unknown error occurred, skip test.");
 				return FWTS_SKIP;
 			}
-			if ((var_runtimeservicessupported & EFI_RT_SUPPORTED_GET_TIME)
-				|| (var_runtimeservicessupported == 0)) {
+			if (var_runtimeservicessupported & EFI_RT_SUPPORTED_GET_TIME) {
 				fwts_passed(fw, "UEFI GetTime runtime service "
 					"supported status test passed.");
 			} else {
@@ -1193,8 +1191,7 @@ static int uefirttime_test38(fwts_framework *fw)
 			fwts_skipped(fw, "Unknown error occurred, skip test.");
 			return FWTS_SKIP;
 		}
-		if ((var_runtimeservicessupported & EFI_RT_SUPPORTED_GET_TIME)
-			|| (var_runtimeservicessupported == 0)) {
+		if (var_runtimeservicessupported & EFI_RT_SUPPORTED_GET_TIME) {
 			fwts_passed(fw, "UEFI GetTime runtime service "
 				"supported status test passed.");
 		} else {
@@ -1212,8 +1209,7 @@ static int uefirttime_test38(fwts_framework *fw)
 	ioret = ioctl(fd, EFI_RUNTIME_SET_TIME, &settime);
 	if (ioret == -1) {
 		if (status == EFI_UNSUPPORTED) {
-			if ((var_runtimeservicessupported & EFI_RT_SUPPORTED_SET_TIME)
-				|| (var_runtimeservicessupported == 0)) {
+			if (var_runtimeservicessupported & EFI_RT_SUPPORTED_SET_TIME) {
 				fwts_failed(fw, LOG_LEVEL_HIGH, "UEFIRuntimeSetTime",
 					"Get the SetTime runtime service supported "
 					"via RuntimeServicesSupported variable. "
@@ -1227,8 +1223,7 @@ static int uefirttime_test38(fwts_framework *fw)
 				fwts_skipped(fw, "Unknown error occurred, skip test.");
 				return FWTS_SKIP;
 			}
-			if ((var_runtimeservicessupported & EFI_RT_SUPPORTED_SET_TIME)
-				|| (var_runtimeservicessupported == 0)) {
+			if (var_runtimeservicessupported & EFI_RT_SUPPORTED_SET_TIME) {
 				fwts_passed(fw, "UEFI SetTime runtime service "
 					"supported status test passed.");
 			} else {
@@ -1243,8 +1238,7 @@ static int uefirttime_test38(fwts_framework *fw)
 			fwts_skipped(fw, "Unknown error occurred, skip test.");
 			return FWTS_SKIP;
 		}
-		if ((var_runtimeservicessupported & EFI_RT_SUPPORTED_SET_TIME)
-			|| (var_runtimeservicessupported == 0)) {
+		if (var_runtimeservicessupported & EFI_RT_SUPPORTED_SET_TIME) {
 			fwts_passed(fw, "UEFI SetTime runtime service "
 				"supported status test passed.");
 		} else {
@@ -1263,8 +1257,7 @@ static int uefirttime_test38(fwts_framework *fw)
 	ioret = ioctl(fd, EFI_RUNTIME_SET_WAKETIME, &setwakeuptime);
 	if (ioret == -1) {
 		if (status == EFI_UNSUPPORTED) {
-			if ((var_runtimeservicessupported & EFI_RT_SUPPORTED_SET_WAKEUP_TIME)
-				|| (var_runtimeservicessupported == 0)) {
+			if (var_runtimeservicessupported & EFI_RT_SUPPORTED_SET_WAKEUP_TIME) {
 				fwts_failed(fw, LOG_LEVEL_HIGH, "UEFIRuntimeSetWakeupTime",
 					"Get the SetWakeupTime runtime service supported "
 					"via RuntimeServicesSupported variable. "
@@ -1279,8 +1272,7 @@ static int uefirttime_test38(fwts_framework *fw)
 				fwts_skipped(fw, "Unknown error occurred, skip test.");
 				return FWTS_SKIP;
 			}
-			if ((var_runtimeservicessupported & EFI_RT_SUPPORTED_SET_WAKEUP_TIME)
-				|| (var_runtimeservicessupported == 0)) {
+			if (var_runtimeservicessupported & EFI_RT_SUPPORTED_SET_WAKEUP_TIME) {
 				fwts_passed(fw, "UEFI SetWakeupTime runtime service "
 					"supported status test passed.");
 			} else {
@@ -1295,8 +1287,7 @@ static int uefirttime_test38(fwts_framework *fw)
 			fwts_skipped(fw, "Unknown error occurred, skip test.");
 			return FWTS_SKIP;
 		}
-		if ((var_runtimeservicessupported & EFI_RT_SUPPORTED_SET_WAKEUP_TIME)
-			|| (var_runtimeservicessupported == 0)) {
+		if (var_runtimeservicessupported & EFI_RT_SUPPORTED_SET_WAKEUP_TIME) {
 			fwts_passed(fw, "UEFI SetWakeupTime runtime service "
 				"supported status test passed.");
 		} else {
@@ -1315,8 +1306,7 @@ static int uefirttime_test38(fwts_framework *fw)
 	ioret = ioctl(fd, EFI_RUNTIME_GET_WAKETIME, &getwakeuptime);
 	if (ioret == -1) {
 		if (status == EFI_UNSUPPORTED) {
-			if ((var_runtimeservicessupported & EFI_RT_SUPPORTED_GET_WAKEUP_TIME)
-				|| (var_runtimeservicessupported == 0)) {
+			if (var_runtimeservicessupported & EFI_RT_SUPPORTED_GET_WAKEUP_TIME) {
 				fwts_failed(fw, LOG_LEVEL_HIGH, "UEFIRuntimeGetWakeupTime",
 					"Get the GetWakeupTime runtime service supported "
 					"via RuntimeServicesSupported variable. "
@@ -1330,8 +1320,7 @@ static int uefirttime_test38(fwts_framework *fw)
 				fwts_skipped(fw, "Unknown error occurred, skip test.");
 				return FWTS_SKIP;
 			}
-			if ((var_runtimeservicessupported & EFI_RT_SUPPORTED_GET_WAKEUP_TIME)
-				|| (var_runtimeservicessupported == 0)) {
+			if (var_runtimeservicessupported & EFI_RT_SUPPORTED_GET_WAKEUP_TIME) {
 				fwts_passed(fw, "UEFI GetWakeupTime runtime service "
 					"supported status test passed.");
 			} else {
@@ -1346,8 +1335,7 @@ static int uefirttime_test38(fwts_framework *fw)
 			fwts_skipped(fw, "Unknow error occurred, skip test.");
 			return FWTS_SKIP;
 		}
-		if ((var_runtimeservicessupported & EFI_RT_SUPPORTED_GET_WAKEUP_TIME)
-			|| (var_runtimeservicessupported == 0)) {
+		if (var_runtimeservicessupported & EFI_RT_SUPPORTED_GET_WAKEUP_TIME) {
 			fwts_passed(fw, "UEFI GetWakeupTime runtime service "
 				"supported status test passed.");
 		} else {
